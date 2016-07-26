@@ -1,0 +1,43 @@
+body>div{
+  //width:@windowSize-vertical;
+  width:100%;
+  max-width:413px;
+  margin:0 auto;
+}
+
+
+@screen-iphone4:320px;
+@screen-iphone5:375px;
+@screen-iphone6:414px;
+
+.myFont(@fontSize;@color;@lineHeight;@weight){
+  .responsive-size(@fontSize);
+  color:@color;
+  line-height:@lineHeight;
+  font-weight:@weight;
+}
+
+.font-no-res(@size;@color;@lineHeight;@weight){
+    font-size:@size;
+    color:@color;
+    line-height:@lineHeight;
+    font-weight:@weight;
+}
+
+//需要根据屏幕尺寸变化font的函数
+.responsive-size(@size){
+  @media (max-width: @screen-iphone4) {
+    font-size:@size*0.5;
+  }
+  @media (min-width: @screen-iphone4) {
+    font-size:@size*0.8;
+  }
+  /* iphone5~6大小 */
+  @media (min-width: @screen-iphone5) {
+    font-size:@size*0.9;
+  }
+  /* 大于iPhone6*/
+  @media (min-width: @screen-iphone6) {
+    font-size:@size;
+  }
+}

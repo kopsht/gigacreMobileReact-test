@@ -1,0 +1,23 @@
+.input-with-icon(@width-i;@height-i;@margin-bottom){
+  .icon-input-group{
+    .size(@width-i;@height-i);
+    .font-no-res(@font-size-base;#707070;@height-i;400);
+    color:#707070;
+    position:relative;
+    margin-bottom: @margin-bottom;
+    border-radius: 5px;
+    padding-left:48px;
+    border:1px solid @border-color;
+    input{
+      border:0;
+      outline: none;
+    }
+
+    >.input-icon{
+      position:absolute;
+      left:15px;
+      top:8px;
+      font-size:20px;
+    }
+  }
+}

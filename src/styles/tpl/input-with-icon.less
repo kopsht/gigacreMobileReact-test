@@ -1,0 +1,34 @@
+/**input with icon component
+need blow structure
+
+<span class="input-icon-group">
+<i class="fa fa-user"></i>
+<input class="input-need-shadow" type="text" placeholder="手机号">
+</span>
+
+**/
+
+.input-icon-group {
+  .clearfix();
+  .s(height; 40rem);
+  border: 1px solid @border-color;
+  border-radius: 4px;
+  display: block;
+  i, input, b {
+    float: left;
+    .s(line-height; 40rem);
+  }
+  i, b {
+    border-right: 1px solid @border-color;
+  }
+  i {
+    .responsive-size(18px);
+    .s(width; 39rem);
+    .s(padding-left; 12rem);
+  }
+  input {
+    width: 80%;
+    height: 95%;
+    background-color: transparent;
+  }
+}

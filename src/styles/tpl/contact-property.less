@@ -1,0 +1,131 @@
+//联系物业
+.contact-property {
+  //一般字体
+  .myFont(@font-size-base; @gray-dark; 14px; 400);
+
+  .contact-property-title {
+    margin: 46px 0 22px @padding-base;
+    .font-no-res(@font-size-large; @gray-darker; @font-size-large; 400);
+  }
+
+  //表单
+  .contact-property-form {
+    form {
+      padding: 0 28px;
+      border-top: 1px solid @border-color-darker;
+
+      //第一组 头像和联系人信息
+      .contact-property-form-group1 {
+        .clearfix();
+        padding: 24px 0;
+        //蓝色点
+        .square-contact {
+          display: block;
+          .font-no-res(14px; @brand-primary; 67px; 400);
+          float: left;
+          margin-right: 10px;
+        }
+        //头像
+        .touxiang {
+          .size(60px; 67px);
+          border: 1px solid transparent;
+          border-radius: 3px;
+          display: block;
+          float: left;
+          margin-right: 10px;
+        }
+
+        //联系人信息  文字和详细信息
+        ul {
+          list-style-type: none;
+          .size(45%; 67px);
+          float: left;
+          li {
+            &.name {
+              .font-no-res(14px; @gray-darker; 14px; 400);
+            }
+            &.star {
+              color: #7dc274;
+            }
+            &.comment {
+              .font-no-res(10px; #707070; 23px; 400);
+            }
+            &.position {
+              width: 90%;
+              .font-no-res(11px; #707070; 13px; 400);
+            }
+            &.sale-record {
+              b {
+                .pillButton(@brand-primary; #fff; 8px; 24px; 13px; 3px);
+                display: inline-block;
+                margin: 3px 10px 3px 0;
+              }
+              font-size: 10px;
+            }
+            &.judge {
+              b, span {
+                .pillButton(@brand-primary; #fff; 8px; 50px; 15px; 3px);
+                display: inline-block;
+                //margin:3px 10px 3px 0;
+                //padding-left:8px;
+                text-align: center;
+              }
+              b {
+                //padding-right:15px;
+              }
+              span, i {
+                margin-left: -5px;
+              }
+              i {
+                .pillButton(@brand-primary; #fff; 8px; 10px; 15px; 3px);
+                display: inline-block;
+                vertical-align: bottom;
+              }
+            }
+          }
+        }
+
+        //联系电话
+        .tel {
+          display: block;
+          .size(67px; 27px);
+          float: right;
+          color: #707070;
+          text-decoration: none;
+          border: 1px solid @border-color;
+          border-radius: 5px;
+          .myFont(12px; inhert; 27px; 400);
+          text-align: center;
+          margin-top: 19px;
+        }
+      }
+
+      //第二组 填入框和提交按钮
+      .contact-property-form-group2 {
+        .input-with-icon(100%; 35px; 9px);
+
+        button {
+          .size(100%; 35px);
+          border: 1px solid transparent;
+          border-radius: 5px;
+          background-color: @brand-primary;
+          .font-no-res(18px; #fff; 35px; 400);
+          //margin-top:9px;
+          margin-top: 44px;
+        }
+
+        .textarea-container {
+          border: 1px solid @border-color;
+          border-radius: 5px;
+        }
+        textarea {
+          border: 0;
+          padding: 17px 21px;
+          width: 100%;
+          outline: none;
+        }
+      }
+
+    }
+  }
+}

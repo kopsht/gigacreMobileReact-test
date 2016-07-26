@@ -1,0 +1,5 @@
+body > div {
+  width: 100%;
+  max-width: 413px;
+  margin: 0 auto;
+}

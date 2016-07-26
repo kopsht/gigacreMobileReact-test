@@ -1,0 +1,227 @@
+//*********************************************************************
+
+//             左边拉出来的modal需引入的Less
+
+//*********************************************************************
+
+@modal-border: #f2f2f2;
+
+.smo(padding,@px1,@px2,@px3,@px4) {
+  padding: @px1/16em @px2/16em @px3/16em @px4/16em;
+}
+
+.smo(padding-left,@val) {
+  padding-left: @val/16em;
+}
+
+.smo(padding-top,@val) {
+  padding-top: @val/16em;
+}
+
+.smo(padding-right,@val) {
+  padding-right: @val/16em;
+}
+
+.smo(padding-bottom,@val) {
+  padding-bottom: @val/16em;
+}
+
+.smo(margin,@px1,@px2,@px3,@px4) {
+  margin: @px1/16em @px2/16em @px3/16em @px4/16em;
+}
+
+.smo(margin-left,@val) {
+  margin-left: @val/16em;
+}
+
+.smo(margin-top,@val) {
+  margin-top: @val/16em;
+}
+
+.smo(margin-right,@val) {
+  margin-right: @val/16em;
+}
+
+.smo(margin-bottom,@val) {
+  margin-bottom: @val/16em;
+}
+
+.smo(size,@w,@h) {
+  width: @w/16em;
+  height: @h/16em;
+}
+
+.smo(width,@w) {
+  width: @w/16em;
+}
+
+.smo(height,@h) {
+  height: @h/16em;
+}
+
+.smo(line-height,@lg) {
+  line-height: @lg/16em;
+}
+
+//左弹框
+.left-modal {
+  position: fixed;
+  left: -84.5%;
+  .size(100%; 100%);
+  z-index: 1500;
+  .clearfix();
+  .myFont(16px; #707070; 1.5; 400);
+}
+
+.modal-content {
+  .size(84.5%; 100%);
+  background-color: #fff;
+  float: left;
+  .smo(padding; 41em; 0; 0; 29em);
+  overflow-x: hidden;
+}
+.modal-content>p{
+  color: #cfcfcf;
+}
+.modal-background {
+  .size(100%; 100%);
+  background-color: #000000;
+  .opacity(0.3);
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  display: none;
+  overflow: visible;
+}
+
+._showModal {
+  left: 0;
+  -webkit-transition: left 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: left 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition: left 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: left 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: left 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+._hideModal {
+  left: -84.5%;
+  -webkit-transition: left 0.2s;
+  -moz-transition: left 0.2s;
+  -ms-transition: left 0.2s;
+  -o-transition: left 0.2s;
+  transition: left 0.2s;
+}
+._showBg{
+  display: block;
+  .opacity(0.3);
+  -webkit-transition:opacity 0.1s ease-out;
+  -moz-transition:opacity 0.1s ease-out;
+  -ms-transition:opacity 0.1s ease-out;
+  -o-transition:opacity 0.1s ease-out;
+  transition:opacity 0.1s ease-out;
+}
+._hideBg{
+  display: none;
+}
+//登陆
+.modal-login {
+  margin: 0;
+  .clearfix();
+  font-size: 1em;
+  img {
+    .smo(size; 52em; 50em);
+    float: left;
+  }
+  a {
+    .smo(line-height; 50em);
+    float: left;
+    font-weight: normal;
+    .smo(margin-left; 25em);
+  }
+}
+
+//搜索
+.search {
+  background-color: @modal-border;
+  display: block;
+  .smo(size; 290em; 27em);
+  border: 1px solid transparent;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  .smo(margin-top; 17em);
+  input {
+    .smo(size; 210em; 20em);
+    margin-top: 2px;
+    .smo(margin-left; 10em);
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    .smo(line-height; 20em);
+  }
+  .fa-search {
+    color: @brand-success;
+    .smo(line-height; 27em);
+    float: right;
+    .smo(margin-right; 10em);
+  }
+}
+
+//开发区名字 && 退出账户
+.modal-name, .modal-quite, .modal-usercenter {
+  font-weight: normal;
+  font-size: 1em;
+  .smo(padding-bottom; 10em);
+  display: block;
+  border-bottom: 1px solid @modal-border;
+  .smo(margin-left; 27em + 27em);
+  .smo(margin-bottom; 20em);
+  .fa {
+    color: @brand-success;
+    .smo(margin-left; -27em);
+    .smo(width;18em);
+    .smo(height;16em);
+  }
+  a {
+    .smo(margin-left; 20em);
+  }
+}
+
+//灰色条
+.grey-bar {
+  width: 120%;
+  .smo(height; 25em);
+  background-color: @modal-border;
+  .smo(margin-left; -29em);
+  .smo(padding-left; 90em);
+}
+
+//用户中心
+.modal-usercenter {
+  list-style-type: none;
+  .smo(margin-top; 20em);
+  border: 0;
+  li {
+    border-bottom: 1px solid @modal-border;
+    .smo(padding-bottom; 9em);
+    .smo(height; 35em);
+    .smo(line-height; 35em)
+  }
+  .fa {
+    color: @brand-primary;
+  }
+  a {
+    .smo(margin-left; 15em);
+  }
+}
+
+//退出账户
+.modal-quite {
+  .smo(margin-top; 20em);
+  .fa {
+    color: #707070;
+  }
+}
+.modal-quite a{
+  .smo(margin-left; 15em);
+}

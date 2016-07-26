@@ -1,0 +1,30 @@
+/** this is checkbox component which look like a font,but truly is a input[type-checkbox]
+need below structrue
+<span class="checkbox-component">
+<label>
+<i class="fa fa-square-o"><input type="checkbox"></i>
+自动登陆
+</label>
+</span>
+
+**/
+.checkbox-component {
+  .clearfix();
+  i {
+    float: left;
+    line-height: 1.6rem;
+    position: relative;
+    .s(margin-right; 10rem);
+    input {
+      visibility: hidden;
+      .size(100%; 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  input{
+    vertical-align: middle;
+  }
+
+}

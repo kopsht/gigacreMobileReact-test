@@ -1,0 +1,37 @@
+//== Breadcrumbs
+//
+//##
+
+@b-padding-vertical:   8px;
+@b-padding-horizontal: 15px;
+@b-bg:                 #f5f5f5;
+@b-color:              #446EB2;
+@b-active-color:       #707070;
+@b-separator:          "/";
+@b-computed:          "12px";
+
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+
+.breadcrumb {
+  float:right;
+  .myFont(@font-size-base; @gray-dark; 12px; 400);
+  padding: @b-padding-vertical @b-padding-horizontal;
+  list-style: none;
+
+  > li {
+    display: inline-block;
+
+    + li:before {
+      content: "@{b-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0 5px;
+      color: @b-color;
+    }
+  }
+
+  > .active {
+    color: @b-active-color;
+  }
+}

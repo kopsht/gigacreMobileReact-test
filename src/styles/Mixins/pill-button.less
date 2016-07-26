@@ -1,0 +1,55 @@
+//pill button
+.pillButton(@bgcolor;
+@txtColor;
+@ftSize:@font-size-base;
+@width;@height;
+@border-rdi:@height / 2){
+
+
+  display: block;
+  .size(@width;@height);
+  background-color:@bgcolor;
+  .font-no-res(@ftSize;@txtColor;@height;400);
+  text-align:center;
+  border:1px solid transparent;
+  -webkit-border-radius:@border-rdi;
+     -moz-border-radius:@border-rdi;
+          border-radius:@border-rdi;
+  cursor:pointer;
+  outline: none;
+  &:hover{
+    background-color: darken(@bgcolor,10%);
+  }
+}
+
+.pill(@bgcolor;@txtColor;@ftSize:@font-size-base;@width;@height;@border-rdi:@height / 2){
+  display: block;
+  .size(@width;@height);
+  background-color:@bgcolor;
+  .font-no-res(@ftSize;@txtColor;@height;400);
+  text-align:center;
+  border:1px solid transparent;
+  -webkit-border-radius:@border-rdi;
+     -moz-border-radius:@border-rdi;
+          border-radius:@border-rdi;
+}
+
+.pillButton-border(@borderColor:@border-color;
+@txtColor;
+@ftSize:@font-size-base;
+@width;@height;
+@border-rdi:@height / 2;
+@border:1px){
+  display: block;
+  .size(@width;@height);
+  .font-no-res(@ftSize;@txtColor;@height;400);
+  text-align:center;
+  .border-radius-set(@border-rdi;@border;@borderColor);
+  cursor:pointer;
+  background-color: transparent;
+  &:hover{
+    -webkit-box-shadow: 0 0 5px darken(@border-color,10%);
+    -moz-box-shadow: 0 0 5px darken(@border-color,10%);
+    box-shadow: 0 0 5px darken(@border-color,10%);
+  }
+}
