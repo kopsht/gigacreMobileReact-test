@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gigacre</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport">
+    <!--<link rel="stylesheet" href="css/detail.css">-->
+    <link rel="stylesheet" href="css/t-index.css">
+
+    <script>
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 //android OR UCBroswer
+                };
+            }(),
+        }
+        if (browser.versions.android) {
+            var windowWidth = window.screen.availWidth;
+            // gigacre design size: iphone6(414px) and put 12px as base fontSize of html
+            var fontSize = Math.ceil(windowWidth / 414 * 12);
+            var html = document.getElementsByTagName('html')
+            html[0].style.fontSize = fontSize + "px"
+        }
+    </script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=ozcN9Ku3okKYCuhrKILel2O3"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/getscript?v=2.0&amp;ak=ozcN9Ku3okKYCuhrKILel2O3&amp;services=&amp;t=20160708193109"></script>
+</head>
+
+<body>
+<div class="modal">
+    <!--banner图-->
+    <div class="search-page">
+        <form id="formForSearch" action="">
+            <a id="cancelSearch" href="#"><i class="fa  fa-close"></i></a>
+            <input class="search-text" placeholder="输入关键词" type="text">
+            <button onsubmit="" class="search-about">搜 索</button>
+            <div class="field">
+                <span class="clean">
+                    <input class="clean-btn" type="reset" value="清除选择条件">
+                </span>
+                <span class="search-rd">
+                   <i class="fa fa-square-o  active"></i>物流仓储
+                    <input class="search-radio check-tog" name="wl" type="checkbox" checked>
+               </span>
+               <span class="search-rd">
+                   <i class="fa fa-square-o active"></i>工业厂房
+                    <input class="search-radio check-tog" name="wl" type="checkbox" checked>
+               </span>
+               <span class="search-rd">
+                   <i class="fa fa-square-o active"></i>研发办公
+                    <input class="search-radio check-tog" name="wl" type="checkbox" checked>
+               </span>
+            </div>
+            <!--</form>-->
+
+
+            <!--<form>-->
+            <div class="field radio-field">
+                <span class="deal-type"><i class="fa fa-sliders"></i>交易类型</span>
+
+                 <span class="search-rd ">
+                   <i class="fa fa-square-o active first-radio"></i>
+                     <i class="mix-circled"><img src="imgs/icn.png" alt=""></i>全部
+                    <input class="search-radio radio-tog" name="lx" type="radio" checked>
+                </span>
+                <span class="search-rd ">
+                   <i class="fa fa-square-o"></i><i class="fa fa-circle orange-circle"><i class="circle-case"></i></i>租赁
+                    <input class="search-radio radio-tog" name="lx" type="radio">
+                 </span>
+                 <span class="search-rd ">
+                   <i class="fa fa-square-o"></i><i class="fa fa-circle purple-circle"><i class="circle-case"></i></i>出售
+                    <input class="search-radio radio-tog" name="lx" type="radio">
+                 </span>
+
+            </div>
+
+            <div class="price">
+                <span>价格</span>
+                <input placeholder="min" name="jg" type="text">
+                <i class="fa  fa-exchange "></i>
+                <input placeholder="max" name="jg" type="text">
+            </div>
+            <div class="area">
+                <span>面积</span>
+                <input placeholder="min" name="mj" type="text">
+                <i class="fa  fa-exchange "></i>
+                <input placeholder="max" name="mj" type="text">
+            </div>
+            <div class="searching-criteria">
+                <div class="retrieval-condition">
+                    <span role="button" id="districtBtn" class="retrieval active">按地区检索</span>
+                    <span role="button" id="extentBtn" class="retrieval retrieval-radius">按半径检索</span>
+                </div>
+                <div class="district">
+                    <ul>
+                        <li>
+                            <span>省份</span>
+                            <select id="sheng" class="drop-down">
+                                <option value="0">请选择</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span>城市</span>
+                            <select id="city" class="drop-down">
+                                <option value="0">请选择</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span>地区</span>
+                            <select id="qu" class="drop-down">
+                                <option value="0">请选择</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <div class="extent" style="display: none">
+                    <ul>
+                        <li>
+                            <span>地址</span>
+                            <input id="addressInput" class="extent-tex" placeholder="请填写地址" type="text">
+                            <input id="addressPoint" type="text" style="display: none">
+                            <b class="distance-unit">
+                                <i id="check" class="fa fa-check-circle notShow"></i>
+                            </b>
+                        </li>
+                        <li>
+                            <span>距离</span>
+                            <input class="extent-tex" placeholder="请填写距离" type="text">
+                            <b class="distance-unit">公里</b>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <input id="extentOrDistrict" style="display: none" type="text">
+            <button onsubmit="" role="button" class="search-submit">确 认</button>
+
+        </form>
+
+    </div>
+    <!--关于声明-->
+    <!--<div class="declare">-->
+    <!--<p>-->
+    <!--上海垓方网络科技有限公司 | 网络经营许可证 沪ICP备16003348号-1 <br/> © Copyright©2010-2015 垓方网gigacre.com版权所有-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--end关于声明-->
+</div>
+<div class="main">
+    <!--banner图-->
+    <div class="banner">
+        <img src="imgs/indexImg/phone-index_01.png" alt="">
+        <h1>首个互联网工业地产招商生态圈</h1>
+        <span id="searchBox">
+            <i class="fa fa-search "></i>
+            请输入关键词
+            <!--<input id="searchKeywords" placeholder="请输入关键词" >-->
+        </span>
+    </div>
+    <img class="bg-service" src="imgs/indexImg/phone-index_02.jpg" alt="">
+    <div class="banner-Page">
+        <img src="imgs/gyq.png" alt="">
+        <!--<div id="canvas" style="overflow:hidden; height:192px"></div>-->
+        <style>
+        </style>
+        <div id="focus" class="focus">
+            <div class="hd">
+                <ul>
+                </ul>
+            </div>
+            <div class="bd">
+                <div class="tempWrap" style="overflow:hidden; position:relative; width:100%">
+                    <ul>
+                        <li><a href="#"><img src="images/tb3.jpg"></a></li>
+                        <li><a href="#"><img src="images/tb1.jpg"></a></li>
+                        <li><a href="#"><img src="images/tb2.jpg"></a></li>
+                        <li><a href="#"><img src="images/tb3.jpg"></a></li>
+                        <li><a href="#"><img src="images/tb1.jpg"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- <img src="imgs/indexImg/phone-index_03.jpg" alt=""> -->
+    </div>
+    <div class="banner-Page">
+        <img src="imgs/kfs.png" alt="">
+        <div id="focus2" class="focus">
+            <div class="hd">
+                <ul>
+                </ul>
+            </div>
+            <div class="bd">
+                <div class="tempWrap" style="overflow:hidden; position:relative; width:100%">
+                    <ul>
+                        <li style="float: left;"><a href="#"><img src="images/tb3.jpg"></a></li>
+                        <li style="float: left;"><a href="#"><img src="images/tb1.jpg"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--<div id="canvas2" style="overflow:hidden; height:192px"></div>-->
+        <!--<img src="imgs/indexImg/phone-index_04.jpg" alt="">-->
+    </div>
+    <ul class="community">
+        <li>
+            <a href="#"><img src="imgs/indexImg/phone-index_05.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="#"><img src="imgs/indexImg/phone-index_06.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="#"><img src="imgs/indexImg/phone-index_07.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="#"><img src="imgs/indexImg/phone-index_08.jpg" alt=""></a>
+        </li>
+        <!--<li>-->
+        <!--<a href="#"><img src="imgs/indexImg/phone-index_09.jpg" alt=""></a>-->
+        <!--</li>-->
+    </ul>
+    <!--关于声明-->
+    <div class="declare">
+        <p>
+            上海垓方网络科技有限公司 | 网络经营许可证 沪ICP备16003348号-1 <br/> © Copyright©2010-2015 垓方网gigacre.com版权所有
+        </p>
+    </div>
+    <!--end关于声明-->
+</div>
+
+<script id="main" src="js/lib/require.js"></script>
+
+<script>
+    require.config({
+        paths: {
+            "jquery": "js/lib/jquery-1.12.1.min",
+            "component/showHide": "js/component/showHide",
+            "inputAddShadow": 'js/component/inputAddShadow',
+        }
+    });
+    require([
+                "js/component/slider",
+                "js/component/modalSearch",
+                'js/lib/TouchSlide.1.0'
+            ],
+            function (slider, modalSearch, TouchSlide) {
+                TouchSlide({
+                    slideCell: "#focus",
+                    titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+                    mainCell: ".bd ul",
+                    effect: "leftLoop",
+                    autoPlay: false,//自动播放
+                    autoPage: true //自动分页
+                });
+                TouchSlide({
+                    slideCell: "#focus2",
+                    titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+                    mainCell: ".bd ul",
+                    effect: "leftLoop",
+                    autoPlay: false,//自动播放
+                    autoPage: true //自动分页
+                });
+
+                var region_list = {
+                    "\u5e7f\u4e1c\u7701": {"\u4f5b\u5c71\u5e02": ["\u4e09\u6c34\u533a"]},
+                    "\u6e56\u5317\u7701": {"\u9102\u5dde\u5e02": ["\u534e\u5bb9\u533a"]},
+                    "\u4e0a\u6d77\u5e02": {"\u5e02\u8f96\u533a": ["\u5609\u5b9a\u533a", "\u95f5\u884c\u533a", "\u91d1\u5c71\u533a", "\u677e\u6c5f\u533a"]},
+                    "\u5929\u6d25\u5e02": {"\u5e02\u8f96\u533a": ["\u897f\u9752\u533a"]},
+                    "\u8fbd\u5b81\u7701": {"\u6c88\u9633\u5e02": ["\u4e8e\u6d2a\u533a"]},
+                    "\u6c5f\u82cf\u7701": {
+                        "\u5357\u4eac\u5e02": ["\u6c5f\u5b81\u533a"],
+                        "\u5e38\u5dde\u5e02": ["\u65b0\u5317\u533a"]
+                    },
+                    "": {"": [null]}
+                };
+                modalSearch(region_list)
+
+            });
+
+</script>
+</body>
+</html>

@@ -1,11 +1,33 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>React Webpack Template Title</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gigacre</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport">
+    <!--<link rel="stylesheet" href="css/detail.css">-->
+
+    <script>
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 //android OR UCBroswer
+                };
+            }(),
+        }
+        if (browser.versions.android) {
+            var windowWidth = window.screen.availWidth;
+            // gigacre design size: iphone6(414px) and put 12px as base fontSize of html
+            var fontSize = Math.ceil(windowWidth / 414 * 12);
+            var html = document.getElementsByTagName('html')
+            html[0].style.fontSize = fontSize + "px"
+        }</script>
 </head>
 <body>
   <div id="app">APPLICATION CONTENT</div>
